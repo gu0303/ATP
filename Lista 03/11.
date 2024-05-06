@@ -53,3 +53,5 @@ class Program
         Console.WriteLine($"Total de votos em branco: {totalVotosBrancos}");
     }
 }
+
+1
