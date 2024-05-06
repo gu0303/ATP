@@ -1,0 +1,38 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Digite o número de elementos da série de Fibonacci a serem exibidos: ");
+        int L = int.Parse(Console.ReadLine());
+
+        if (L <= 0)
+        {
+            Console.WriteLine("Número inválido. O número de elementos deve ser maior que zero.");
+        }
+        else
+        {
+            // Inicializa os primeiros dois números da série
+            int p = 0, s = 1;
+
+            // Exibe os primeiros dois números da série
+            Console.WriteLine(p);
+            if (L > 1)
+            {
+                Console.WriteLine(s);
+            }
+
+            // Calcula e exibe os próximos números da série
+            for (int i = 2; i < L; i++)
+            {
+                int proximo = p + s;
+                Console.WriteLine(proximo);
+
+                // Atualiza os valores para os próximos cálculos
+                p = s;
+                s = proximo;
+            }
+        }
+    }
+}
