@@ -53,3 +53,5 @@ class Program
         Console.WriteLine($"Lucro total: {lucroTotal:C}");
     }
 }
+
+1
