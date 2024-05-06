@@ -58,5 +58,3 @@ class Program
         Console.WriteLine($"Percentual de pessoas com salário até R$100,00: {percentualSalario100:F2}%");
     }
 }
-
-1
