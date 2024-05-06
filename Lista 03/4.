@@ -1,0 +1,29 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Digite um número natural para calcular seu fatorial: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // Verifica se o número é negativo
+        if (n < 0)
+        {
+            Console.WriteLine("Número inválido. O número deve ser não negativo.");
+        }
+        else
+        {
+            // Inicializa o fatorial como 1
+            int fatorial = 1;
+
+            // Calcula o fatorial
+            for (int i = 1; i <= n; i++)
+            {
+                fatorial *= i;
+            }
+
+            Console.WriteLine($"O fatorial de {n} é {fatorial}");
+        }
+    }
+}
