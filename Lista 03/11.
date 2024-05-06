@@ -1,0 +1,55 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int voto, totalVotosCandidato1 = 0, totalVotosCandidato2 = 0, totalVotosCandidato3 = 0, totalVotosCandidato4 = 0;
+        int totalVotosNulos = 0, totalVotosBrancos = 0;
+
+        Console.WriteLine("Digite o código do candidato (1, 2, 3 ou 4), ou 5 para voto nulo, 6 para voto em branco, ou 0 para encerrar:");
+
+        while (true)
+        {
+            Console.Write("Código do voto: ");
+            voto = int.Parse(Console.ReadLine());
+
+            if (voto == 0)
+            {
+                break; // Encerra o loop se o código do voto for 0
+            }
+
+            switch (voto)
+            {
+                case 1:
+                    totalVotosCandidato1++;
+                    break;
+                case 2:
+                    totalVotosCandidato2++;
+                    break;
+                case 3:
+                    totalVotosCandidato3++;
+                    break;
+                case 4:
+                    totalVotosCandidato4++;
+                    break;
+                case 5:
+                    totalVotosNulos++;
+                    break;
+                case 6:
+                    totalVotosBrancos++;
+                    break;
+                default:
+                    Console.WriteLine("Código de voto inválido.");
+                    break;
+            }
+        }
+
+        Console.WriteLine($"Total de votos para o candidato 1: {totalVotosCandidato1}");
+        Console.WriteLine($"Total de votos para o candidato 2: {totalVotosCandidato2}");
+        Console.WriteLine($"Total de votos para o candidato 3: {totalVotosCandidato3}");
+        Console.WriteLine($"Total de votos para o candidato 4: {totalVotosCandidato4}");
+        Console.WriteLine($"Total de votos nulos: {totalVotosNulos}");
+        Console.WriteLine($"Total de votos em branco: {totalVotosBrancos}");
+    }
+}
