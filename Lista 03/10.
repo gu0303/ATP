@@ -1,0 +1,55 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double precoCompra, precoVenda, lucro, lucroTotal = 0, compraTotal = 0, vendaTotal = 0;
+        int mercadoriasLucroMenor10 = 0, mercadoriasLucroEntre10e20 = 0, mercadoriasLucroMaior20 = 0;
+
+        Console.WriteLine("Informe o preço de compra e de venda de cada mercadoria (digite 0 para encerrar):");
+
+        while (true)
+        {
+            Console.Write("Preço de compra: ");
+            precoCompra = double.Parse(Console.ReadLine());
+
+            // Verifica se o preço de compra é igual a 0 para encerrar a leitura
+            if (precoCompra == 0)
+            {
+                break;
+            }
+
+            Console.Write("Preço de venda: ");
+            precoVenda = double.Parse(Console.ReadLine());
+
+            // Calcula o lucro da mercadoria
+            lucro = precoVenda - precoCompra;
+            lucroTotal += lucro;
+            compraTotal += precoCompra;
+            vendaTotal += precoVenda;
+
+            // Determina em qual faixa de lucro a mercadoria se encaixa
+            if (lucro < precoCompra * 0.1)
+            {
+                mercadoriasLucroMenor10++;
+            }
+            else if (lucro >= precoCompra * 0.1 && lucro <= precoCompra * 0.2)
+            {
+                mercadoriasLucroEntre10e20++;
+            }
+            else
+            {
+                mercadoriasLucroMaior20++;
+            }
+        }
+
+        Console.WriteLine($"Mercadorias com lucro < 10%: {mercadoriasLucroMenor10}");
+        Console.WriteLine($"Mercadorias com lucro entre 10% e 20%: {mercadoriasLucroEntre10e20}");
+        Console.WriteLine($"Mercadorias com lucro > 20%: {mercadoriasLucroMaior20}");
+
+        Console.WriteLine($"Valor total de compra: {compraTotal:C}");
+        Console.WriteLine($"Valor total de venda: {vendaTotal:C}");
+        Console.WriteLine($"Lucro total: {lucroTotal:C}");
+    }
+}
