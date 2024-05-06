@@ -1,0 +1,39 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Digite um número inteiro e positivo N: ");
+        int N = int.Parse(Console.ReadLine());
+
+        if (N < 0)
+        {
+            Console.WriteLine("Número inválido. O número deve ser positivo.");
+        }
+        else
+        {
+            double E = 1; // Inicializa E com 1, pois o primeiro termo é sempre 1
+
+            for (int i = 1; i <= N; i++)
+            {
+                E += 1.0 / Fatorial(i); // Adiciona o inverso do fatorial de i a E
+            }
+
+            Console.WriteLine($"O valor de E é {E}");
+        }
+    }
+
+    // Método para calcular o fatorial de um número
+    static int Fatorial(int n)
+    {
+        if (n == 0)
+        {
+            return 1;
+        }
+        else
+        {
+            return n * Fatorial(n - 1);
+        }
+    }
+}
