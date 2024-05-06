@@ -1,0 +1,30 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Digite um número inteiro e positivo n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        if (n <= 0)
+        {
+            Console.WriteLine("Número inválido. O número deve ser positivo.");
+        }
+        else
+        {
+            double soma = 0;
+
+            Console.WriteLine("Termos gerados:");
+
+            for (int i = 1; i <= n; i++)
+            {
+                double termo = 1.0 / i; // Calcula o termo atual
+                Console.WriteLine($"1/{i} = {termo}"); // Exibe o termo gerado
+                soma += termo; // Adiciona o termo à soma
+            }
+
+            Console.WriteLine($"O valor final de S é {soma}");
+        }
+    }
+}
