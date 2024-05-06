@@ -1,0 +1,38 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Solicita ao usuário que insira a sequência de valores
+        Console.WriteLine("Insira uma sequência de valores inteiros separados por espaço:");
+        string[] valores = Console.ReadLine().Split(' '); // Lê a linha de entrada e divide os valores separados por espaço
+
+        // Variáveis para contar os valores positivos, negativos e zeros
+        int p = 0, n = 0, z = 0;
+
+        // Percorre cada valor na sequência fornecida pelo usuário
+        foreach (string valorStr in valores)
+        {
+            // Converte o valor para inteiro
+            int valor = int.Parse(valorStr);
+
+            // Verifica se o valor é positivo, negativo ou zero e atualiza as variáveis correspondentes
+            if (valor > 0)
+            {
+                p++;
+            }
+            else if (valor < 0)
+            {
+                n++;
+            }
+            else
+            {
+                z++;
+            }
+        }
+
+        // Exibe o resultado
+        Console.WriteLine($"Positivos: {positivos}, Negativos: {negativos}, Zeros: {zeros}");
+    }
+}
