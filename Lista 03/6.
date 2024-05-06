@@ -1,0 +1,60 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double salario, somaSalarios = 0, maiorSalario = double.MinValue;
+        int numeroFilhos, totalPessoas = 0, totalFilhos = 0, totalSalario100 = 0;
+
+        Console.WriteLine("Digite o salário e o número de filhos de cada habitante (Digite um salário negativo para encerrar):");
+
+        while (true)
+        {
+            Console.Write("Salário: ");
+            salario = double.Parse(Console.ReadLine());
+
+            // Verifica se o salário é negativo para encerrar a leitura de dados
+            if (salario < 0)
+            {
+                break;
+            }
+
+            Console.Write("Número de filhos: ");
+            numeroFilhos = int.Parse(Console.ReadLine());
+
+            // Calcula a média do número de filhos
+            totalFilhos += numeroFilhos;
+
+            // Verifica se o salário é até R$100,00
+            if (salario <= 100)
+            {
+                totalSalario100++;
+            }
+
+            // Calcula a soma dos salários e verifica o maior salário
+            somaSalarios += salario;
+            if (salario > maiorSalario)
+            {
+                maiorSalario = salario;
+            }
+
+            // Incrementa o total de pessoas
+            totalPessoas++;
+        }
+
+        // Calcula a média do salário da população
+        double mediaSalarios = somaSalarios / totalPessoas;
+
+        // Calcula a média do número de filhos
+        double mediaFilhos = (double)totalFilhos / totalPessoas;
+
+        // Calcula o percentual de pessoas com salário até R$100,00
+        double percentualSalario100 = (double)totalSalario100 / totalPessoas * 100;
+
+        Console.WriteLine($"Média do salário da população: {mediaSalarios:C}");
+        Console.WriteLine($"Média do número de filhos: {mediaFilhos:F2}");
+        Console.WriteLine($"Maior salário: {maiorSalario:C}");
+        Console.WriteLine($"Percentual de pessoas com salário até R$100,00: {percentualSalario100:F2}%");
+    }
+}
