@@ -33,6 +33,6 @@ class Program
         }
 
         // Exibe o resultado
-        Console.WriteLine($"Positivos: {positivos}, Negativos: {negativos}, Zeros: {zeros}");
+        Console.WriteLine($"Positivos: {p}, Negativos: {n}, Zeros: {z}");
     }
 }
