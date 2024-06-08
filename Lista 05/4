@@ -1,0 +1,56 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[] X = new int[10];
+        int[] Y = new int[10];
+        
+        PreencherVetor(X, "X");
+        PreencherVetor(Y, "Y");
+        
+        int[] Z = GerarVetorIntercalado(X, Y);
+        
+        Console.WriteLine("Conteúdo do vetor X:");
+        ExibirVetor(X);
+        
+        Console.WriteLine("Conteúdo do vetor Y:");
+        ExibirVetor(Y);
+        
+        Console.WriteLine("Conteúdo do vetor intercalado Z:");
+        ExibirVetor(Z);
+    }
+    
+    static void PreencherVetor(int[] vetor, string nome)
+    {
+        Console.WriteLine($"Digite 10 números para o vetor {nome}:");
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Elemento {i + 1} de {nome}: ");
+            vetor[i] = int.Parse(Console.ReadLine());
+        }
+    }
+    
+    static int[] GerarVetorIntercalado(int[] vetor1, int[] vetor2)
+    {
+        int[] intercalado = new int[20];
+        
+        for (int i = 0; i < 10; i++)
+        {
+            intercalado[i * 2] = vetor1[i];     
+            intercalado[i * 2 + 1] = vetor2[i]; 
+        }
+        
+        return intercalado;
+    }
+    
+    static void ExibirVetor(int[] vetor)
+    {
+        foreach (int elemento in vetor)
+        {
+            Console.Write(elemento + " ");
+        }
+        Console.WriteLine();
+    }
+}
