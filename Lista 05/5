@@ -1,0 +1,51 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[] numerosSorteados = SortearNumeros();
+        
+        Console.WriteLine("Tente adivinhar um dos números sorteados entre 10 e 50!");
+        LerTentativas(numerosSorteados);
+    }
+    
+    static int[] SortearNumeros()
+    {
+        Random random = new Random();
+        int[] numeros = new int[3];
+        
+        for (int i = 0; i < 3; i++)
+        {
+            numeros[i] = random.Next(10, 51);
+        }
+        
+        return numeros;
+    }
+    
+    static void LerTentativas(int[] numerosSorteados)
+    {
+        bool acertou = false;
+        
+        while (!acertou)
+        {
+            Console.Write("Digite sua tentativa: ");
+            int tentativa = int.Parse(Console.ReadLine());
+            
+            for (int i = 0; i < numerosSorteados.Length; i++)
+            {
+                if (tentativa == numerosSorteados[i])
+                {
+                    Console.WriteLine("Parabéns! Você acertou um dos números sorteados!");
+                    acertou = true;
+                    break;
+                }
+            }
+            
+            if (!acertou)
+            {
+                Console.WriteLine("Você não acertou. Tente novamente.");
+            }
+        }
+    }
+}
