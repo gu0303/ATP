@@ -1,0 +1,67 @@
+using System;
+
+class Program
+{
+    // Procedimento para preencher a matriz 4x4
+    static void PreencherMatriz(int[,] matriz)
+    {
+        Random random = new Random();
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                matriz[i, j] = random.Next(1, 101);
+            }
+        }
+    }
+
+    // Função para calcular a soma dos elementos abaixo da diagonal principal
+    static int SomaAbaixoDiagonalPrincipal(int[,] matriz)
+    {
+        int soma = 0;
+        for (int i = 1; i < 4; i++)
+        {
+            for (int j = 0; j < i; j++)
+            {
+                soma += matriz[i, j];
+            }
+        }
+        return soma;
+    }
+
+    // Procedimento para exibir a matriz e a diagonal principal
+    static void ExibirMatrizEDiagonalPrincipal(int[,] matriz)
+    {
+        Console.WriteLine("Matriz 4x4:");
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                Console.Write(matriz[i, j] + "\t");
+            }
+            Console.WriteLine();
+        }
+
+        Console.WriteLine("Elementos da diagonal principal:");
+        for (int i = 0; i < 4; i++)
+        {
+            Console.Write(matriz[i, i] + " ");
+        }
+        Console.WriteLine();
+    }
+
+    static void Main()
+    {
+        int[,] matriz = new int[4, 4];
+
+        // Preencher a matriz com valores aleatórios
+        PreencherMatriz(matriz);
+
+        // Exibir a matriz e a diagonal principal
+        ExibirMatrizEDiagonalPrincipal(matriz);
+
+        // Calcular e exibir a soma dos elementos abaixo da diagonal principal
+        int somaAbaixoDiagonal = SomaAbaixoDiagonalPrincipal(matriz);
+        Console.WriteLine($"Soma dos elementos abaixo da diagonal principal: {somaAbaixoDiagonal}");
+    }
+}
