@@ -1,0 +1,81 @@
+using System;
+
+class Program
+{
+    // Procedimento para preencher uma matriz 4x6
+    static void PreencherMatriz(int[,] matriz)
+    {
+        Random random = new Random();
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                matriz[i, j] = random.Next(1, 101);
+            }
+        }
+    }
+
+    // Função para calcular a matriz S que é a soma de A e B
+    static int[,] SomaMatrizes(int[,] A, int[,] B)
+    {
+        int[,] S = new int[4, 6];
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                S[i, j] = A[i, j] + B[i, j];
+            }
+        }
+        return S;
+    }
+
+    // Função para calcular a matriz D que é a diferença de A e B (A - B)
+    static int[,] DiferencaMatrizes(int[,] A, int[,] B)
+    {
+        int[,] D = new int[4, 6];
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                D[i, j] = A[i, j] - B[i, j];
+            }
+        }
+        return D;
+    }
+
+    // Procedimento para exibir uma matriz
+    static void ExibirMatriz(int[,] matriz, string nome)
+    {
+        Console.WriteLine($"Matriz {nome}:");
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                Console.Write(matriz[i, j] + "\t");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    static void Main()
+    {
+        int[,] A = new int[4, 6];
+        int[,] B = new int[4, 6];
+
+        // Preencher as matrizes A e B com valores aleatórios
+        PreencherMatriz(A);
+        PreencherMatriz(B);
+
+        // Exibir as matrizes A e B
+        ExibirMatriz(A, "A");
+        ExibirMatriz(B, "B");
+
+        // Calcular e exibir a matriz S (soma de A e B)
+        int[,] S = SomaMatrizes(A, B);
+        ExibirMatriz(S, "S (A + B)");
+
+        // Calcular e exibir a matriz D (diferença de A e B)
+        int[,] D = DiferencaMatrizes(A, B);
+        ExibirMatriz(D, "D (A - B)");
+    }
+}
