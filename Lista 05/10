@@ -1,0 +1,102 @@
+using System;
+
+class Program
+{
+    // Procedimento para preencher uma matriz 10x10
+    static void PreencherMatriz(int[,] matriz)
+    {
+        Random random = new Random();
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                matriz[i, j] = random.Next(1, 101);
+            }
+        }
+    }
+
+    // Procedimento para exibir uma matriz
+    static void ExibirMatriz(int[,] matriz, string nome)
+    {
+        Console.WriteLine($"Matriz {nome}:");
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                Console.Write(matriz[i, j] + "\t");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    // Procedimento para trocar a linha 2 com a linha 8
+    static void TrocarLinhas(int[,] matriz, int linha1, int linha2)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            int temp = matriz[linha1, j];
+            matriz[linha1, j] = matriz[linha2, j];
+            matriz[linha2, j] = temp;
+        }
+    }
+
+    // Procedimento para trocar a coluna 4 com a coluna 10
+    static void TrocarColunas(int[,] matriz, int coluna1, int coluna2)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            int temp = matriz[i, coluna1];
+            matriz[i, coluna1] = matriz[i, coluna2];
+            matriz[i, coluna2] = temp;
+        }
+    }
+
+    // Procedimento para trocar a diagonal principal com a diagonal secundária
+    static void TrocarDiagonais(int[,] matriz)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            int temp = matriz[i, i];
+            matriz[i, i] = matriz[i, 9 - i];
+            matriz[i, 9 - i] = temp;
+        }
+    }
+
+    // Procedimento para trocar a linha 5 com a coluna 10
+    static void TrocarLinhaComColuna(int[,] matriz, int linha, int coluna)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            int temp = matriz[linha, i];
+            matriz[linha, i] = matriz[i, coluna];
+            matriz[i, coluna] = temp;
+        }
+    }
+
+    static void Main()
+    {
+        int[,] matriz = new int[10, 10];
+
+        // Preencher a matriz com valores aleatórios
+        PreencherMatriz(matriz);
+
+        // Exibir a matriz original
+        ExibirMatriz(matriz, "Original");
+
+        // Trocar a linha 2 com a linha 8 e exibir a matriz resultante
+        TrocarLinhas(matriz, 1, 7);
+        ExibirMatriz(matriz, "Linha 2 trocada com Linha 8");
+
+        // Trocar a coluna 4 com a coluna 10 e exibir a matriz resultante
+        TrocarColunas(matriz, 3, 9);
+        ExibirMatriz(matriz, "Coluna 4 trocada com Coluna 10");
+
+        // Trocar a diagonal principal com a diagonal secundária e exibir a matriz resultante
+        TrocarDiagonais(matriz);
+        ExibirMatriz(matriz, "Diagonal Principal trocada com Diagonal Secundária");
+
+        // Trocar a linha 5 com a coluna 10 e exibir a matriz resultante
+        TrocarLinhaComColuna(matriz, 4, 9);
+        ExibirMatriz(matriz, "Linha 5 trocada com Coluna 10");
+    }
+}
