@@ -1,1 +1,48 @@
+using System;
 
+class Program
+{
+    static void Main()
+    {
+        double[] temperaturas = new double[31];
+        
+        Random random = new Random();
+        for (int i = 0; i < 31; i++)
+        {
+            temperaturas[i] = 15 + random.NextDouble() * 25;
+        }
+        
+        double menorTemperatura = temperaturas[0];
+        double maiorTemperatura = temperaturas[0];
+        double somaTemperaturas = 0;
+
+        foreach (double temperatura in temperaturas)
+        {
+            if (temperatura < menorTemperatura)
+            {
+                menorTemperatura = temperatura;
+            }
+            if (temperatura > maiorTemperatura)
+            {
+                maiorTemperatura = temperatura;
+            }
+            somaTemperaturas += temperatura;
+        }
+
+        double temperaturaMedia = somaTemperaturas / temperaturas.Length;
+
+        int diasInferiorMedia = 0;
+        foreach (double temperatura in temperaturas)
+        {
+            if (temperatura < temperaturaMedia)
+            {
+                diasInferiorMedia++;
+            }
+        }
+
+        Console.WriteLine($"A menor temperatura ocorrida: {menorTemperatura:F2}°C");
+        Console.WriteLine($"A maior temperatura ocorrida: {maiorTemperatura:F2}°C");
+        Console.WriteLine($"A temperatura média: {temperaturaMedia:F2}°C");
+        Console.WriteLine($"Número de dias com temperatura inferior à média: {diasInferiorMedia}");
+    }
+}
