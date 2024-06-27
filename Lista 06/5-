@@ -1,0 +1,22 @@
+using System;
+using System.IO;
+
+class Program{
+    static void Main(){
+        try{
+            Console.Write("Digite o caminho do arquivo: ");
+            string caminhoArquivo = Console.ReadLine();
+
+            string[] linhas = File.ReadAllLines(caminhoArquivo);
+
+            foreach (string linha in linhas){
+                Console.WriteLine(linha);
+            }
+
+            Console.WriteLine($"O arquivo possui {linhas.Length} linhas.");
+        }
+        catch (Exception e){
+            Console.WriteLine("Ocorreu um erro ao ler o arquivo: " + e.Message);
+        }
+    }
+}
