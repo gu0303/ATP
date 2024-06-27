@@ -1,0 +1,30 @@
+using System;
+using System.IO;
+
+class Program{
+    static void Main(){
+        try{
+            Console.Write("Digite o caminho do arquivo: ");
+            string caminhoArquivo = Console.ReadLine();
+
+            string conteudo = File.ReadAllText(caminhoArquivo);
+
+            int contagemA = ContarCaracter(conteudo, 'a');
+
+            Console.WriteLine($"A quantidade de caracteres 'a' no arquivo é: {contagemA}");
+        }
+        catch (Exception e){
+            Console.WriteLine("Ocorreu um erro ao ler o arquivo: " + e.Message);
+        }
+    }
+
+    static int ContarCaracter(string texto, char caracter){
+        int count = 0;
+        foreach (char c in texto){
+            if (c == caracter){
+                count++;
+            }
+        }
+        return count;
+    }
+}
