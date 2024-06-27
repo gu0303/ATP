@@ -1,0 +1,71 @@
+using System;
+using System.IO;
+
+class Program{
+    static void Main(){
+        int opcao;
+
+        do{
+            Console.WriteLine("Escolha uma opção:");
+            Console.WriteLine("1. Inserir dados de alunos");
+            Console.WriteLine("2. Ler dados de alunos");
+            Console.WriteLine("3. Sair");
+            opcao = int.Parse(Console.ReadLine());
+
+            switch (opcao){
+                case 1:
+                    InserirDados();
+                    break;
+                case 2:
+                    LerDados();
+                    break;
+                case 3:
+                    Console.WriteLine("Saindo...");
+                    break;
+                default:
+                    Console.WriteLine("Opção inválida. Tente novamente.");
+                    break;
+            }
+
+        } while (opcao != 3);
+    }
+
+    static void InserirDados()
+    {
+        string caminhoArquivo = "alunos.txt";
+        using (StreamWriter writer = new StreamWriter(caminhoArquivo, true))
+        {
+            bool continuar;
+            do
+            {
+                Console.Write("Digite a matrícula do aluno: ");
+                string matricula = Console.ReadLine();
+
+                Console.Write("Digite o telefone do aluno: ");
+                string telefone = Console.ReadLine();
+
+                writer.WriteLine($"{matricula},{telefone}");
+
+                Console.Write("Deseja inserir dados de outro aluno? (s/n): ");
+                continuar = Console.ReadLine().ToLower() == "s";
+
+            } while (continuar);
+        }
+    }
+
+    static void LerDados(){
+        string caminhoArquivo = "alunos.txt";
+        if (File.Exists(caminhoArquivo)){
+            string[] linhas = File.ReadAllLines(caminhoArquivo);
+            Console.WriteLine("Dados dos alunos:");
+
+            foreach (string linha in linhas){
+                string[] dados = linha.Split(',');
+                Console.WriteLine($"Matrícula: {dados[0]}, Telefone: {dados[1]}");
+            }
+        }
+        else{
+            Console.WriteLine("O arquivo de dados dos alunos não foi encontrado.");
+        }
+    }
+}
