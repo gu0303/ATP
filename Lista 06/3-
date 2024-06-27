@@ -1,0 +1,28 @@
+using System;
+
+class Program{
+    static void Main(){
+        Console.Write("Digite uma frase: ");
+        string f = Console.ReadLine();
+
+        string fraseCodificada = CodificarCesar(f, 3);
+
+        Console.WriteLine($"Nova string: {fraseCodificada}");
+    }
+
+    static string CodificarCesar(string f, int deslocamento){
+        char[] buffer = f.ToCharArray();
+        for (int i = 0; i < buffer.Length; i++){
+            char letra = buffer[i];
+            if (char.IsLetter(letra)){
+                char limite = char.IsUpper(letra) ? 'A' : 'a';
+                letra = (char)(letra + deslocamento);
+                if (letra > limite + 25){
+                    letra = (char)(letra - 26);
+                }
+                buffer[i] = letra;
+            }
+        }
+        return new string(buffer);
+    }
+}
