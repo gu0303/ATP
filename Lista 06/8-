@@ -1,0 +1,34 @@
+using System;
+using System.IO;
+
+class Program{
+    static void Main(){
+        Console.Write("Digite a quantidade de veículos: ");
+        int veiculos = int.Parse(Console.ReadLine());
+
+        Console.Write("Digite o valor do aluguel por veículo: ");
+        double valorAluguel = double.Parse(Console.ReadLine());
+
+        double faturamentoMensal = (veiculos * valorAluguel) / 3;
+        double faturamentoAnual = faturamentoMensal * 12;
+
+        double multaMensal = (faturamentoMensal / 10) * 0.2;
+
+        double manutencaoAnual = (veiculos * 0.02) * 600;
+
+        Console.WriteLine($"Faturamento mensal: {faturamentoMensal:C}");
+        Console.WriteLine($"Faturamento anual: {faturamentoAnual:C}");
+        Console.WriteLine($"Valor ganho com multas no mês: {multaMensal:C}");
+        Console.WriteLine($"Valor gasto com manutenção anual: {manutencaoAnual:C}");
+
+        string caminhoArquivo = "resultado.txt";
+        using (StreamWriter writer = new StreamWriter(caminhoArquivo)){
+            writer.WriteLine($"Faturamento mensal: {faturamentoMensal:C}");
+            writer.WriteLine($"Faturamento anual: {faturamentoAnual:C}");
+            writer.WriteLine($"Valor ganho com multas no mês: {multaMensal:C}");
+            writer.WriteLine($"Valor gasto com manutenção anual: {manutencaoAnual:C}");
+        }
+
+        Console.WriteLine($"Os resultados foram salvos no arquivo {caminhoArquivo}");
+    }
+}
