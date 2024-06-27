@@ -1,0 +1,26 @@
+using System;
+using System.IO;
+using System.Linq;
+
+class Program{
+    static void Main(){
+        string caminhoArquivo = "C:\\numeros.txt";
+
+        try{
+
+            string[] linhas = File.ReadAllLines(caminhoArquivo);
+            double[] numeros = Array.ConvertAll(linhas, double.Parse);
+
+            double valorMaximo = numeros.Max();
+            double valorMinimo = numeros.Min();
+            double media = numeros.Average();
+
+            Console.WriteLine($"Valor máximo: {valorMaximo}");
+            Console.WriteLine($"Valor mínimo: {valorMinimo}");
+            Console.WriteLine($"Média: {media}");
+        }
+        catch (Exception e){
+            Console.WriteLine($"Ocorreu um erro ao ler o arquivo: {e.Message}");
+        }
+    }
+}
