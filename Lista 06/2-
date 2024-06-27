@@ -1,0 +1,26 @@
+using System;
+
+class Program{
+    static void Main(){
+        Console.Write("Digite uma frase: ");
+        string f = Console.ReadLine();
+
+        string fraseSemVogais = RemoverVogais(f);
+
+        Console.WriteLine($"Frase sem vogais: {fraseSemVogais}");
+    }
+
+    static string RemoverVogais(string f){
+        string vogais = "aeiouAEIOU";
+        string resultado = string.Empty;
+
+        foreach (char c in f){
+            if (!vogais.Contains(c))
+            {
+                resultado += c;
+            }
+        }
+
+        return resultado;
+    }
+}
