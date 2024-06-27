@@ -1,0 +1,24 @@
+using System;
+using System.IO;
+
+class Program{
+    static void Main(){
+        Console.Write("Digite um número: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int somaDivisores = 0;
+
+        Console.WriteLine("Divisores:");
+        for (int i = 1; i <= n; i++){
+            if (n % i == 0){
+                Console.WriteLine(i);
+                somaDivisores += i;
+            }
+        }
+
+        string caminhoArquivo = "soma_divisores.txt";
+        File.WriteAllText(caminhoArquivo, $"A soma dos divisores de {n} é: {somaDivisores}");
+
+        Console.WriteLine($"A soma dos divisores foi salva no arquivo {caminhoArquivo}");
+    }
+}
